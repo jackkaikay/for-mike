@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebApplicationMovies.Models.Film>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+        $("[name='searchString']").autocomplete({
+
+            source: '@Url.Action("Search")',
+
+
+            minLength: 2,
+
+            select: function (event, ui) {
+
+                window.location = '@Url.Action("Details")'
+                    + '/' + ui.item.id
+            }
+        });
+}) 
+
+
+</script>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by title : @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Film Title", "Index",
+                     new { sortOrder = ViewBag.titleSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilmGenre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilmDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilmReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilmImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FilmTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FilmGenre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FilmDescTrimmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FilmReleaseDate)
+        </td>
+        <td>
+            @if (item.FilmImage != null)
+            {
+
+                <img src="@Url.Content(item.FilmImage)" width="100" />
+            }
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FilmID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FilmID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FilmID })
+        </td>
+    </tr>
+}
+
+</table>

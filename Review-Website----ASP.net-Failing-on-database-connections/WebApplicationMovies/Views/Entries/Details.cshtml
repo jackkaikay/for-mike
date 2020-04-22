@@ -1,0 +1,50 @@
+﻿@model WebApplicationMovies.Models.Entry
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Entry</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryFname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryFname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntrySname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntrySname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryImage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EntryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>JK Film Review</h1>
+    <p class="lead">A website for hosting and reading all film reviews</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Films</h2>
+        <p>
+            See all recently updated films
+        </p>
+        <p><a class="btn btn-default" @Html.ActionLink("Films", "Index", "Films")</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>People</h2>
+        <p>See all actors and there related films</p>
+        <p><a class="btn btn-default" @Html.ActionLink("People", "Index", "Entries")</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>People/Films</h2>
+        <p>See actors and their related films</p>
+        <p><a class="btn btn-default" @Html.ActionLink("People/Films", "Index", "Actings")</a></p>
+    </div>
+</div>
